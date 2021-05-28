@@ -85,7 +85,15 @@ const SignUp = ({submit}) => {
 
     const check = () => {
         if (Object.keys(errors).length === 0 && upSubmitted) {
-          history.goBack('/SignIn');
+          if(values.select==="Admin"){
+            history.push('/Admin');
+          }
+          else if(values.select==="Buyer"){
+            history.push('/Buyer');
+          }
+          else if(values.select==="Seller"){
+            history.push('/Seller');
+          }
         }
       }
     
