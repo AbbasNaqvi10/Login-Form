@@ -13,10 +13,10 @@ const SignIn = () => {
     const [inSubmitted, setInSubmitted] = useState(false);
     
    if (localStorage.getItem("signup") === null){
-    var signup ={email:'test@gmail.com', password:'test123'};
-    localStorage.setItem('signup', JSON.stringify(signup));
-    data = JSON.parse(localStorage.getItem('signup'));
-    console.log(data);
+    // var signup ={email:'test@gmail.com', password:'test123'};
+    // localStorage.setItem('signup', JSON.stringify(signup));
+    // data = JSON.parse(localStorage.getItem('signup'));
+    // console.log(data);
     alert("Signup First Please!");
     history.push('/SignUp');
    }
