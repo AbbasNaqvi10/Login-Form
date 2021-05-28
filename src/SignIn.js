@@ -65,18 +65,17 @@ const SignIn = () => {
   }
 
     return (
-      <div className='form-container'>
+      <div className='form-container' style={{height:'500px'}}>
         <span className='close-btn'>×</span>
           <div className='form-content-left'>
-            <img className='form-img' src='img/img-4.svg' alt='spaceship' />
-          </div>
-          <div className='form-content-right'>
-            <form onSubmit={handleSubmit} className='form' noValidate>
               <h1
               style={{fontSize:'4rem'}}
               >
                 Sign In
               </h1>
+          </div>
+          <div className='form-content-right'>
+            <form onSubmit={handleSubmit} className='form' noValidate>
               
               <div className='form-inputs'>
                 <label className='form-label'>Email</label>

@@ -93,7 +93,11 @@ const SignUp = ({submit}) => {
     <div className='form-container'>
       <span className='close-btn'>×</span>
         <div className='form-content-left'>
-          <img className='form-img' src='img/img-4.svg' alt='spaceship' />
+              <h1
+              style={{fontSize:'4rem'}}
+              >
+                Sign up
+              </h1>
         </div>
         
         <div className='form-content-right'>

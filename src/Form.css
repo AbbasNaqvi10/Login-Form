@@ -20,13 +20,15 @@
   }
   
   .form-content-left {
-    background: linear-gradient(
+    /* background: linear-gradient(
       90deg,
       rgb(39, 176, 255) 0%,
       rgb(0, 232, 236) 100%
-    );
+    ); */
+    text-align: center;
     border-radius: 10px 0 0 10px;
     position: relative;
+    margin: auto;
   }
   
   .form-img {
