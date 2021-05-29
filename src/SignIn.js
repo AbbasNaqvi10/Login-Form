@@ -3,24 +3,127 @@ import {useHistory} from "react-router-dom";
 import './Form.css';
 
 const SignIn = () => {
+  var aemail = [], semail = [], bemail = [];
     let history = useHistory();
     const [values, setValues] = useState({
       email: '',
       password: '',
     });
-    var data = JSON.parse(localStorage.getItem('signup'));
+    var admin = JSON.parse(localStorage.getItem('admin'));
+    var buy = JSON.parse(localStorage.getItem('buyer'));
+    var sell = JSON.parse(localStorage.getItem('seller'));
     const [errors, setErrors] = useState({});
     const [inSubmitted, setInSubmitted] = useState(false);
-    
-   if (localStorage.getItem("signup") === null){
-    // var signup ={email:'test@gmail.com', password:'test123'};
-    // localStorage.setItem('signup', JSON.stringify(signup));
-    // data = JSON.parse(localStorage.getItem('signup'));
-    // console.log(data);
-    alert("Signup First Please!");
-    history.push('/SignUp');
+     
+   if (admin === null && buy === null && sell === null){
+      alert("Signup First Please!");
+      history.push('/SignUp');
    }
-    
+
+   /*const Check_data = () => {
+     var value = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+      while ( i-- ) {
+        value.push(JSON.parse(localStorage.getItem(keys[i])));
+        console.log(value)
+      }
+   
+    var boss = [];
+   if(value[0].length!==0){
+     let j = value[0].length 
+     for (i=0; i<j; i++) 
+     {
+     boss.push(value[0][j]);
+     }
+     for (i=0; i<j; i++) 
+     {
+      console.log(boss[i].email);
+      console.log(boss[i].password);
+     }
+   }
+
+    var seller = [];
+    if(value[1].length!==0){
+     let j = value[1].length
+     for (i=0; i<j; i++)  {
+       seller.push(value[1][i]);
+     }
+     for (i=0; i<j; i++) {
+      console.log(seller[i].email);
+      console.log(seller[i].password);
+     }
+   }
+
+    var buyer = [];
+    if(value[2].length!==0){
+     let j = value[2].length
+     for (i=0; i<j; i++)  {
+       buyer.push(value[2][i]);
+     }
+     for (i=0; i<j; i++) {
+      console.log(bemail[i]);
+      console.log(buyer[i].password);
+     }
+   }
+
+     if(boss.length!==0 && seller.length!==0 && buyer.length!==0){
+       for(i=0;i<=boss.length;i++){
+         if(values.email===boss.email[i] && values.password===[i]){
+           history.push('/Admin');
+         }
+       }
+       for(i=0;i<=seller.length;i++){
+         if(values.email===seller.email && values.password===seller.password){
+           history.push('/Seller');
+         }
+       }
+       for(i=0;i<=buyer.length;i++){
+         if(values.email===buyer.email && values.password===buyer.password){
+           history.push('/Buyer');
+         }
+       }
+     }
+     else if(boss.length===0 && seller.length!==0 && buyer.length!==0){
+       for(i=0;i<=seller.length;i++){
+         if(values.email===seller.email && values.password===seller.password){
+           history.push('/Seller');
+         }
+       }
+       for(i=0;i<=buyer.length;i++){
+         if(values.email===buyer.email && values.password===buyer.password){
+           history.push('/Buyer');
+         }
+       }
+     }
+     else if(boss.length!==0 && seller.length===0 && buyer.length!==0){
+       for(i=0;i<=boss.length;i++){
+         if(values.email===boss.email && values.password===boss.password){
+           history.push('/Admin');
+         }
+       }
+       for(i=0;i<=buyer.length;i++){
+         if(values.email===buyer.email && values.password===buyer.password){
+           history.push('/Buyer');
+         }
+       }
+     }
+     else if(boss.length!==0 && seller.length!==0 && buyer.length===0){
+       for(i=0;i<=boss.length;i++){
+         if(values.email===boss.email && values.password===boss.password){
+           history.push('/Admin');
+         }
+       }
+       for(i=0;i<=seller.length;i++){
+         if(values.email===seller.email && values.password===seller.password){
+           history.push('/Seller');
+         }
+       }
+     }
+   }*/
+  
+
     function validateInfo(values) {
       let errors = {};
     
@@ -54,15 +157,120 @@ const SignIn = () => {
     
     const check = () => {
       if (Object.keys(errors).length === 0 && inSubmitted) {
-        if(data.email===values.email && values.password===data.password){
-          history.push('/Dashboard');
+        if (admin.length!==0 && sell.length!==0 && buy.length!==0) {
+
+        var value = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+      while ( i-- ) {
+        value.push(JSON.parse(localStorage.getItem(keys[i])));
+        //console.log(value)
+      }
+   
+    var boss = [];
+   if(value[0].length!==0){
+     let j = value[0].length 
+     for (i=0; i<j; i++) 
+     {
+     boss.push(value[0][i]);
+     //console.log(boss);
+     }
+     for (i=0; i<j; i++) 
+     {
+      aemail[i] = boss[i].email;
+      console.log(boss[i].password);
+     }
+     console.log("/n");
+   }
+
+    var seller = [];
+    if(value[1].length!==0){
+     let j = value[1].length
+     for (i=0; i<j; i++)  {
+      seller.push(value[1][i]);
+     }
+     for (i=0; i<j; i++) {
+      semail[i] = seller[i].email;
+      console.log(seller[i].password);
+     }
+     console.log("/n");
+   }
+
+    var buyer = [];
+    if(value[2].length!==0){
+     let j = value[2].length
+     for (i=0; i<j; i++)  {
+      buyer.push(value[2][i]);
+     }
+     for (i=0; i<j; i++) {
+      bemail[i] = buyer[i].email;
+      console.log(buyer[i].password);
+     }
+     console.log("/n");
+   }
+
+   if(boss.length!==0 && seller.length!==0 && buyer.length!==0){
+    for(i=0;i<=boss.length;i++){
+      if(values.email===aemail[i] && values.password===boss[i].password){
+        history.push('/Admin');
+      }
+    }
+    for(i=0;i<=seller.length;i++){
+      if(values.email===semail[i] && values.password===seller[i].password){
+        history.push('/Seller');
+      }
+    }
+    for(i=0;i<=buyer.length;i++){
+      if(values.email===bemail[i] && values.password===buyer[i].password){
+        history.push('/Buyer');
+      }
+    }
+  }
+  else if(boss.length===0 && seller.length!==0 && buyer.length!==0){
+    for(i=0;i<=seller.length;i++){
+      if(values.email===semail[i] && values.password===seller[i].password){
+        history.push('/Seller');
+      }
+    }
+    for(i=0;i<=buyer.length;i++){
+      if(values.email===bemail[i] && values.password===buyer[i].password){
+        history.push('/Buyer');
+      }
+    }
+  }
+  else if(boss.length!==0 && seller.length===0 && buyer.length!==0){
+    for(i=0;i<=boss.length;i++){
+      if(values.email===aemail[i] && values.password===boss[i].password){
+        history.push('/Admin');
+      }
+    }
+    for(i=0;i<=buyer.length;i++){
+      if(values.email===bemail[i] && values.password===buyer[i].password){
+        history.push('/Buyer');
+      }
+    }
+  }
+  else if(boss.length!==0 && seller.length!==0 && buyer.length===0){
+    for(i=0;i<=boss.length;i++){
+      if(values.email===aemail[i] && values.password===boss[i].password){
+        history.push('/Admin');
+      }
+    }
+    for(i=0;i<=seller.length;i++){
+      if(values.email===semail[i] && values.password===seller[i].password){
+        history.push('/Seller');
+      }
+    }
+  }
         }
+
         else{
           alert("Wrong Email Or Password. SignUp First Please!");
           history.push('/SignUp');
         }
+      }
     }
-  }
 
     return (
       <div className='form-container' style={{height:'500px'}}>

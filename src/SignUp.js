@@ -5,6 +5,22 @@ import './Form.css';
 const SignUp = ({submit}) => {
 
     let history = useHistory();
+    if (localStorage.getItem("admin") === null){
+      localStorage.setItem('admin', '[]');
+    }
+    var admin_old_data = JSON.parse(localStorage.getItem('admin'));
+
+    if (localStorage.getItem("buyer") === null){
+      localStorage.setItem('buyer', '[]');
+    }
+    var buyer_old_data = JSON.parse(localStorage.getItem('buyer'));
+
+    if (localStorage.getItem("seller") === null){
+      localStorage.setItem('seller', '[]');
+    }
+    var seller_old_data = JSON.parse(localStorage.getItem('seller'));
+    
+    
     const [items] = React.useState([
         {
           label: "Admin",
@@ -75,13 +91,23 @@ const SignUp = ({submit}) => {
 
         if(values.username.length!==0 && values.email.length!==0 && values.age.length!==0 && values.select.length!==0 && values.password.length!==0 && values.password2.length!==0)
         { 
-          var signup ={name:`${values.username}`, email:`${values.email}`,age:`${values.age}`,select:`${values.select}`,password:`${values.password}`,};
-          localStorage.setItem('signup', JSON.stringify(signup));
-          var retrievedObject = localStorage.getItem('signup');
-
-          console.log('retrievedObject: ', JSON.parse(retrievedObject));
+          if(values.select==="Admin"){
+            let data ={name:`${values.username}`, email:`${values.email}`,age:`${values.age}`,category:`${values.select}`,password:`${values.password}`,};
+            admin_old_data.push(data);
+            localStorage.setItem('admin', JSON.stringify(admin_old_data));
+          }
+          else if(values.select==="Buyer"){
+            let data ={name:`${values.username}`, email:`${values.email}`,age:`${values.age}`,category:`${values.select}`,password:`${values.password}`,};
+            buyer_old_data.push(data);
+            localStorage.setItem('buyer', JSON.stringify(buyer_old_data));
+          }
+          else if(values.select==="Seller"){
+            let data ={name:`${values.username}`, email:`${values.email}`,age:`${values.age}`,category:`${values.select}`,password:`${values.password}`,};
+            seller_old_data.push(data);
+            localStorage.setItem('seller', JSON.stringify(seller_old_data));
+          }
         }
-    };
+      };
 
     const check = () => {
         if (Object.keys(errors).length === 0 && upSubmitted) {

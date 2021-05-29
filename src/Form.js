@@ -8,6 +8,8 @@ import Error from './Error';
 import Admin from './Admin';
 import Seller from './Seller';
 import Buyer from './Buyer';
+import SellerList from './SellerList';
+import BuyerList from './BuyerList';
 
 const Form = () => {
 
@@ -21,6 +23,8 @@ const Form = () => {
                     <Route exact path='/Admin' component={Admin}></Route>
                     <Route exact path='/Seller' component={Seller}></Route>
                     <Route exact path='/Buyer' component={Buyer}></Route>
+                    <Route exact path='/SellerList' component={SellerList}></Route>
+                    <Route exact path='/BuyerList' component={BuyerList}></Route>
                     <Route component={Error}/>
                 </Switch>
             </Router>
